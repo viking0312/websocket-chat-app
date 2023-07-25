@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-//webssocket server
 @ServerEndpoint(value = "/chat/{username}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
 public class ChatEndpoint {
 
