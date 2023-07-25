@@ -1,5 +1,6 @@
 package com.maulik.java.websocketchatapp;
 
+// Payload
 public class Message {
     private String to;
     private String from;
