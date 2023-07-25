@@ -10,7 +10,7 @@ function connect() {
 
     ws.onmessage = function(event) {
         var log = document.getElementById("log");
-        console.log(event.data);
+        console.log(event.data.content);
         var message = JSON.parse(event.data);
         log.innerHTML += message.from + " : " + message.content + "\n";
     };
