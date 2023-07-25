@@ -38,7 +38,7 @@ jobs:
           app-name: 'WebsocketChatApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_384FCDDC6D1B44DF955599859A278BDB }}
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build/libs/*.war'
+          package: '${{ github.workspace }}/build/libs/*.war'
 
 #   deploy:
 #     runs-on: ubuntu-latest
