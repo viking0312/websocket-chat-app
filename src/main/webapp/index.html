@@ -1,28 +1,32 @@
 <html>
 <head>
     <title>Websocket Chat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<table>
-    <tr>
-        <td colspan="2">
-            <input type="text" id="username" placeholder="Username"/>
-            <button type="button" onclick="connect();" >Connect</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <textarea readonly="true" rows="10" cols="80" id="log"></textarea>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <input type="text" size="51" id="msg" placeholder="Message"/>
-            <button type="button" onclick="send();" >Send</button>
-        </td>
-    </tr>
-</table>
+<div class="container">
+    <div class="row m-2">
+        <div class="col-6">
+            <input type="text" id="username" placeholder="Username" class="form-control"/>
+        </div>
+        <div class="col-6">
+            <button type="button" onclick="connect();" class="btn btn-primary">Connect</button>
+        </div>
+    </div>
+    <div class="m-4 chat-container" id="chat-box">
+<!--            <textarea readonly="true" rows="10" cols="80" id="log" class="form-control"></textarea>-->
+    </div>
+    <div class="row m-2">
+        <div class="col">
+            <input type="text" size="51" id="msg" placeholder="Message" class="form-control"/>
+        </div>
+        <div class="col">
+            <button type="button" onclick="send(); " class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
 </body>
 
 <script src="websocket.js"></script>
