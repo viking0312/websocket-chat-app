@@ -6,6 +6,9 @@ public class Message {
     private String from;
     private String content;
 
+
+    private int messageType = MessageType.NORMAL.getValue();
+
     public String getTo() {
         return to;
     }
@@ -28,5 +31,13 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(int messageType) {
+        this.messageType = messageType;
     }
 }
