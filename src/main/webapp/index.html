@@ -7,7 +7,11 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+">
     <div class="row m-2">
         <div class="col-6">
             <input type="text" id="username" placeholder="Username" class="form-control"/>
@@ -16,10 +20,15 @@
             <button type="button" id="connect" onclick="connect();" class="btn btn-primary">Connect</button>
         </div>
     </div>
-    <div class="m-4 chat-container" id="chat-box">
+    <div class="m-4 chat-container" id="chat-box" style="
+    overflow-y: auto;
+    margin-bottom: 60px;">
 <!--            <textarea readonly="true" rows="10" cols="80" id="log" class="form-control"></textarea>-->
     </div>
-    <div class="row m-2">
+    <div class="row m-2" style="
+    display: flex;
+    position: absolute;
+    bottom: 0;">
         <div class="col">
             <div class="input-group">
                 <input type="text" size="51" id="msg" placeholder="Message" class="form-control"/>
