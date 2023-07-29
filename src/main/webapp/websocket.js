@@ -31,7 +31,7 @@ function connect() {
                 createUserToastNotification(message.from, 'online')
                 break
             case 2:
-                createChatMessageElement(message.from, message.content)
+                createChatMessageElement(message.from, message.content, 'received')
                 break
             default:
 
@@ -50,27 +50,22 @@ function connect() {
 }
 
 function send() {
-    var content = messageInput.value;
-    // var json = JSON.stringify({
-    //     "content":content
-    // });
 
-    ws.send(content);
-    messageInput.value = "";
-    messageInput.focus();
+    const message = messageInput.value.trim();
+    if (message !== "") {
+        // Add your code to send the message or display it on the chat container
+        // For example:
+        createChatMessageElement('', message, 'sender')
+        ws.send(message);
+        messageInput.value = "";
+        messageInput.focus();
+    }
 }
 
 messageInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         event.preventDefault(); // Prevents the default behavior (form submission, new line)
-        const message = messageInput.value.trim();
-        if (message !== "") {
-            // Add your code to send the message or display it on the chat container
-            // For example:
-            ws.send(message);
-            messageInput.value = "";
-            messageInput.focus();
-        }
+        send();
     }
 });
 
@@ -82,10 +77,10 @@ document.getElementById("liveToastBtn").onclick = function() {
     toastList.forEach(toast => toast.show())
 }
 
-function createChatMessageElement(user, message) {
+function createChatMessageElement(user, message, dynamicClass) {
     var iDiv = document.createElement('div');
     // iDiv.id = 'block';
-    iDiv.className = 'm-1 chat-message';
+    iDiv.className = 'm-1 chat-message ' + dynamicClass;
     const senderDiv = document.createElement("div");
     senderDiv.classList.add("font-weight-bold");
 
