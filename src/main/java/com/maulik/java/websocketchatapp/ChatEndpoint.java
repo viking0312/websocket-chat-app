@@ -54,14 +54,16 @@ public class ChatEndpoint {
     @OnClose
     public void onClose(Session session) {
         chatEndpoints.remove(this);
+        users.remove(session.getId());
+        String username = users.get(session.getId());
         if(Objects.nonNull(users.get(session.getId()))) {
-            users.remove(session.getId());
             Message message = new Message();
-            message.setFrom(users.get(session.getId()));
+            message.setFrom(username);
             message.setContent("Disconnected!");
             message.setMessageType(MessageType.OFFLINE.getValue());
             broadcast(message);
         }
+
     }
 
     @OnError
