@@ -54,8 +54,6 @@ public class ChatEndpoint {
     @OnClose
     public void onClose(Session session) {
         chatEndpoints.remove(this);
-        users.remove(session.getId());
-        String username = users.get(session.getId());
         if(Objects.nonNull(users.get(session.getId()))) {
             Message message = new Message();
             message.setFrom(username);
@@ -63,7 +61,7 @@ public class ChatEndpoint {
             message.setMessageType(MessageType.OFFLINE.getValue());
             broadcast(message);
         }
-
+        users.remove(session.getId());
     }
 
     @OnError
