@@ -13,7 +13,9 @@ function connect() {
     var host = document.location.host;
     var pathname = document.location.pathname;
 
-    ws = new WebSocket("ws://" + host + pathname + "chat/" + username);
+    const isSecure = window.location.protocol === 'https:';
+    const wsProtocol = isSecure ? 'wss://' : 'ws://';
+    ws = new WebSocket(wsProtocol + host + pathname + "chat/" + username);
 
     ws.onmessage = function (event) {
         // var log = document.getElementById("log");
